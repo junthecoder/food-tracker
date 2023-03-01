@@ -18,4 +18,9 @@ class Menu extends Model
     {
         return $this->belongsToMany(Record::class);
     }
+
+    public function foods()
+    {
+        return $this->belongsToMany(Food::class);
+    }
 }

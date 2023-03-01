@@ -10,4 +10,9 @@ class Food extends Model
     use HasFactory;
 
     protected $table = 'foods';
+
+    public function menus()
+    {
+        return $this->belongsToMany(Menu::class);
+    }
 }
