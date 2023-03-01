@@ -13,4 +13,9 @@ class Menu extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function records()
+    {
+        return $this->belongsToMany(Record::class);
+    }
 }
