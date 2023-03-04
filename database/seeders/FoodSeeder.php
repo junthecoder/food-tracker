@@ -13,17 +13,27 @@ class FoodSeeder extends Seeder
      */
     public function run(): void
     {
-        $values = fn ($name, $calories, $protein, $fat, $carbs, $salt) =>
-            ['name' => $name, 'calories' => $calories, 'protein' => $protein, 'fat' => $fat, 'carbs' => $carbs, 'salt' => $salt];
+        $values =
+            fn ($name, $default_quantity, $default_unit, $calories, $protein, $fat, $carbs, $salt) => [
+                'name' => $name, 'default_quantity' => $default_quantity, 'default_unit' => $default_unit, 'calories' => $calories, 'protein' => $protein, 'fat' => $fat, 'carbs' => $carbs, 'salt' => $salt
+            ];
 
-        DB::table('foods')->insert([
-            $values('ご飯', 73, 7.0, 4.9, 1.5, 0),
-            $values('オートミール', 350, 13.7, 5.7, 69.1, 0),
-            $values('木綿豆腐', 73, 7.0, 4.9, 1.5, 0),
-            $values('りんご', 53, 0.1, 0.2, 15.5, 0),
-            $values('バナナ', 93, 1.1, 0.2, 22.5, 0),
-            $values('オリーブオイル', 894, 0, 100, 0, 0),
-            $values('アーモンド', 609, 19.6, 51.8, 20.9, 0),
-        ]);
+        $id = DB::table('foods')->insertGetId($values('ご飯', 100, 'g', 73, 7.0, 4.9, 1.5, 0));
+
+        $id = DB::table('foods')->insertGetId($values('オートミール', 100, 'g', 350, 13.7, 5.7, 69.1, 0));
+
+        $id = DB::table('foods')->insertGetId($values('木綿豆腐', 1, '丁', 73, 7.0, 4.9, 1.5, 0));
+        DB::table('food_units')->insert(['food_id' => $id, 'unit' => '丁', 'grams' => 300]);
+
+        $id = DB::table('foods')->insertGetId($values('りんご', 1, '個', 53, 0.1, 0.2, 15.5, 0));
+        DB::table('food_units')->insert(['food_id' => $id, 'unit' => '個', 'grams' => 300]);
+
+        $id = DB::table('foods')->insertGetId($values('バナナ', 1, '本', 93, 1.1, 0.2, 22.5, 0));
+        DB::table('food_units')->insert(['food_id' => $id, 'unit' => '本', 'grams' => 140]);
+
+        $id = DB::table('foods')->insertGetId($values('アーモンド', 100, 'g', 609, 19.6, 51.8, 20.9, 0));
+
+        $id = DB::table('foods')->insertGetId($values('オリーブオイル', 5, 'ml', 894, 0, 100, 0, 0));
+        DB::table('food_units')->insert(['food_id' => $id, 'unit' => 'ml', 'grams' => 0.91]);
     }
 }

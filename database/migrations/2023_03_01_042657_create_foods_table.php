@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('foods', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->float('default_quantity');
+            $table->string('default_unit');
             $table->float('calories');
             $table->float('protein');
             $table->float('fat');

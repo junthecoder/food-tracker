@@ -15,4 +15,9 @@ class Food extends Model
     {
         return $this->belongsToMany(Menu::class);
     }
+
+    public function foodUnits()
+    {
+        return $this->hasMany(FoodUnit::class);
+    }
 }
