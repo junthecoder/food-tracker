@@ -26,4 +26,9 @@ class CreateMenu extends Component
     {
         $this->foods->push(Food::find($id));
     }
+
+    public function removeFood($key)
+    {
+        $this->foods->pull($key);
+    }
 }
