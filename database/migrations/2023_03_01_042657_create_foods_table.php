@@ -24,7 +24,7 @@ return new class extends Migration
             $table->float('salt');
             $table->timestamps();
 
-            DB::statement('ALTER TABLE foods ADD FULLTEXT INDEX ngram_idx (name) WITH PARSER ngram');
+            DB::statement('ALTER TABLE foods ADD FULLTEXT INDEX fulltext_index (name) WITH PARSER ngram');
         });
     }
 
