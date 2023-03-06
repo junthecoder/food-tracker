@@ -10,6 +10,7 @@
         "laravel/breeze": "^1.19",
         "laravel/framework": "^10.0",
         "laravel/sanctum": "^3.2",
+        "laravel/telescope": "^4.14",
         "laravel/tinker": "^2.8",
         "phpoffice/phpspreadsheet": "^1.28",
         "wire-elements/modal": "^1.0"
