@@ -35,7 +35,7 @@
 
                 </div>
                 <div class="mb-4">
-                    <button type="button" onclick="Livewire.emit('openModal', 'search-food')"
+                    <button type="button" wire:click="$emit('openModal', 'search-food')"
                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                         {{ __('Add Food') }}
                     </button>
