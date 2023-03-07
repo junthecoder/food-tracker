@@ -3,14 +3,21 @@
 namespace App\Http\Livewire;
 
 use App\Models\Food;
+use App\Models\Menu;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class CreateMenu extends Component
 {
+    public $name = '';
     public Collection $foods;
 
     protected $listeners = 'foodSelected';
+
+    protected $rules = [
+        'foods.*.quantity' => 'required',
+    ];
 
     public function mount()
     {
@@ -30,5 +37,20 @@ class CreateMenu extends Component
     public function removeFood($key)
     {
         $this->foods->pull($key);
+    }
+
+    public function submit()
+    {
+        $menu = new Menu;
+        $menu->user_id = Auth::id();
+        $menu->name = $this->name;
+        $menu->save();
+
+        // $menu->foods()->saveMany($this->foods);
+        foreach ($this->foods as $food) {
+            $menu->foods()->attach($food, ["quantity" => $food->quantity]);
+        }
+
+        return to_route('menus.index');
     }
 }
