@@ -7,7 +7,7 @@
                         <div class="mb-2">
                             <label for="name" class="mb-5">{{ __('Name') }}</label>
                         </div>
-                        <input id="name" type="text" name="name"
+                        <input wire:model="name" id="name" type="text" name="name"
                             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                     </div>
                     <div class="mb-2">
