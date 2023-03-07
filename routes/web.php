@@ -33,7 +33,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->prefix('/menus')->group(function () {
     Route::get('/', Menus\Index::class)->name('menus.index');
-    Route::get('/create', CreateMenu::class)->name('menus.create');
+    Route::get('/create', Menus\Create::class)->name('menus.create');
 });
 
 require __DIR__.'/auth.php';

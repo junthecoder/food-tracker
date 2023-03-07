@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Menus;
 
 use App\Models\Food;
 use App\Models\Menu;
@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
-class CreateMenu extends Component
+class Create extends Component
 {
     public $name = '';
     public Collection $foods;
@@ -26,7 +26,7 @@ class CreateMenu extends Component
 
     public function render()
     {
-        return view('livewire.create-menu');
+        return view('livewire.menus.create');
     }
 
     public function foodSelected($id)
