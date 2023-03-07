@@ -3,11 +3,11 @@
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 text-gray-900 dark:text-gray-100">
                 <div class="divide-y divide-gray-200 dark:divide-gray-700">
-                    <div class="my-4 overflow-hidden divide-y divide-gray-200 dark:divide-gray-700">
-                        <button type="button"
-                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">
+                    <div class="my-4 divide-y divide-gray-200 dark:divide-gray-700">
+                        <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm"
+                            href="{{ route('menus.create') }}">
                             {{ __('Add Menu') }}
-                        </button>
+                        </a>
                     </div>
                     <ul class="divide-y divide-gray-200 dark:divide-gray-700">
                         @foreach ($menus as $menu)
