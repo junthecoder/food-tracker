@@ -8,10 +8,15 @@ use Livewire\Component;
 
 class Index extends Component
 {
+    public $menus;
+
+    public function mount()
+    {
+        $this->menus = Menu::where('user_id', Auth::id())->get();
+    }
+
     public function render()
     {
-        return view('livewire.menus.index', [
-            'menus' => Menu::where('user_id', Auth::id())->get(),
-        ]);
+        return view('livewire.menus.index');
     }
 }
