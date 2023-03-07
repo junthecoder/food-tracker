@@ -1,8 +1,7 @@
 <?php
 
-use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Livewire\CreateMenu;
+use App\Http\Livewire\Meals;
 use App\Http\Livewire\Menus;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +28,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::middleware('auth')->prefix('/meals')->group(function () {
+    Route::get('/', Meals\Index::class)->name('meals.index');
+    Route::get('/create', Meals\Create::class)->name('meals.create');
 });
 
 Route::middleware('auth')->prefix('/menus')->group(function () {
