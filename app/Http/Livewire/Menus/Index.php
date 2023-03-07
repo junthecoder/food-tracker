@@ -19,4 +19,10 @@ class Index extends Component
     {
         return view('livewire.menus.index');
     }
+
+    public function removeMenu($id)
+    {
+        Menu::destroy($id);
+        $this->menus = $this->menus->reject(fn ($menu) => $menu->id == $id);
+    }
 }
